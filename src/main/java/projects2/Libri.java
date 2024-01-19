@@ -25,4 +25,12 @@ public class Libri extends ElementiBiblioteca{
     public String getGenere() {
         return genere;
     }
+
+    @Override
+    public String toString() {
+        return "Libri{" + super.toString() +
+                "autore='" + autore + '\'' +
+                ", genere='" + genere + '\'' +
+                '}';
+    }
 }

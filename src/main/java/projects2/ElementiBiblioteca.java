@@ -36,4 +36,14 @@ public abstract class ElementiBiblioteca {
     public int getnPagine() {
         return nPagine;
     }
+
+    @Override
+    public String toString() {
+        return "ElementiBiblioteca{" +
+                "ISBN=" + ISBN +
+                ", titolo='" + titolo + '\'' +
+                ", annoPubblicazione=" + annoPubblicazione +
+                ", nPagine=" + nPagine +
+                '}';
+    }
 }

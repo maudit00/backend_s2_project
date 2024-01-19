@@ -15,7 +15,15 @@ public class Riviste extends ElementiBiblioteca{
         this.periodicità = periodicità;
     }
 
+    @Override
+    public String toString() {
+        return "Riviste{" + super.toString() +
+                "periodicità=" + periodicità +
+                '}';
+    }
+
     public Periodicità getPeriodicità() {
         return periodicità;
     }
-}
+
+    }
