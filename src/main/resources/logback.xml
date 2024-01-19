@@ -55,10 +55,10 @@
 
 
     <!--additivity serve per indicare se il logger deve usare solo il proprio appender o anche quello ereditato da root-->
-    <logger name="archivio_info" level="info" additivity="true">
+    <logger name="archivio_info" level="info" additivity="false">
         <appender-ref ref="LOG" />
     </logger>
-    <logger name="archivio_error" level="error" additivity="true">
+    <logger name="archivio_error" level="error" additivity="false">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="ERROR"/>
     </logger>
