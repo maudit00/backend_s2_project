@@ -6,17 +6,17 @@
             <pattern>%d{yyyy-MM-dd hh:mm:ss} %-4relative [%thread] %-5level %logger{35} -%kvp- %msg %n</pattern>
         </encoder>
     </appender>
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <appender name="ERROR" class="ch.qos.logback.core.FileAppender">
         <!-- "application-name" is a variable -->
-	    <File>logs/corso_epicode.log</File>
+	    <File>logs/archivio_error.log</File>
         <append>true</append>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>%d %p %t %c - %m%n</Pattern>
         </layout>
     </appender>
-    <appender name="FILE_ERROR" class="ch.qos.logback.core.FileAppender">
+    <appender name="LOG" class="ch.qos.logback.core.FileAppender">
         <!-- "application-name" is a variable -->
-        <File>/home/brucaliffo/Documents/logs/corso_epicode_error.log</File>
+        <File>logs/archivio_info.log</File>
         <append>true</append>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>%d{yyyy-MM-dd hh:mm:ss} %p %t %c - %m%n</Pattern>
@@ -55,7 +55,14 @@
 
 
     <!--additivity serve per indicare se il logger deve usare solo il proprio appender o anche quello ereditato da root-->
+    <logger name="archivio" level="info" additivity="true">
+        <appender-ref ref="LOG" />
+    </logger>
+    <logger name="archivio2" level="error" additivity="true">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ERROR"/>
+    </logger>
     <root level="info">
-        <appender-ref ref="FILE"/>
+        <appender-ref ref="ERROR"/>
     </root>
 </configuration>

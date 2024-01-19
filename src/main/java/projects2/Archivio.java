@@ -16,7 +16,8 @@ import java.util.stream.Collectors;
 
 
 public class Archivio {
-    Logger logger = LoggerFactory.getLogger("archivio");
+    final static Logger infoLogger = LoggerFactory.getLogger("archivio");
+    final static Logger errorLogger = LoggerFactory.getLogger("archivio2");
     public static void main(String[] args) {
         List<ElementiBiblioteca> archivio = new ArrayList<>();
 
@@ -54,14 +55,14 @@ public class Archivio {
         try {
             salvaSuDisco(archivio);
         } catch (IOException e){
-            System.out.println(e);
+            errorLogger.error(String.valueOf(e));
         }
 
         try {
            ArrayList<ElementiBiblioteca> a1 =  leggiDaDisco();
            printList(a1);
         } catch (IOException e){
-            System.out.println(e);
+            errorLogger.error(String.valueOf(e));
         }
     }
 
@@ -76,7 +77,7 @@ public class Archivio {
                 throw new RuntimeException();
             }
         } catch (RuntimeException e){
-            System.out.println("Elemento con ISBN: " + isbn + " non trovato!");
+            errorLogger.error("Elemento con ISBN: " + isbn + " non trovato!");
         }
     }
 
@@ -86,9 +87,12 @@ public class Archivio {
 
     public static ElementiBiblioteca searchByIsbn (List<ElementiBiblioteca> lista, long isbn){
         try {
-            return lista.stream().filter(e -> e.getISBN() == isbn).findAny().orElseThrow(() -> new SearchExecption("Elemento con ISBN " + isbn + " non trovato"));
+            return lista.stream()
+                    .filter(e -> e.getISBN() == isbn)
+                    .findAny()
+                    .orElseThrow(() -> new SearchExecption("Elemento con ISBN " + isbn + " non trovato"));
         } catch (SearchExecption e){
-            System.out.println(e);
+            errorLogger.error(String.valueOf(e));
         return null;
         }
     }
@@ -99,7 +103,7 @@ public class Archivio {
             list.stream().findAny().orElseThrow(()-> new SearchExecption("Nessun elemento con Anno " + anno + " trovato"));
             return list;
         } catch (SearchExecption e){
-            System.out.println(e);
+            errorLogger.error(String.valueOf(e));
             return null;
         }
     }
@@ -110,7 +114,7 @@ public class Archivio {
            list.stream().findAny().orElseThrow(()-> new SearchExecption("Nessun elemento con Autore " + autore + " trovato"));
            return list;
        } catch (SearchExecption e){
-           System.out.println(e);
+           errorLogger.error(String.valueOf(e));
            return null;
        }
     }
@@ -170,9 +174,11 @@ public class Archivio {
     //aggiunta in archivio con controllo su ISBN se è già esistente
     public static void addToArchivio(List<ElementiBiblioteca> lista, ElementiBiblioteca element) {
         if (lista.stream().map(e -> e.getISBN()).anyMatch(el -> el == element.getISBN())){
-            System.out.println("L'archivio ha già l'elemento : " + element);
+            System.out.println();
+            errorLogger.error("L'archivio ha già l'elemento : " + element);
         } else {
             lista.add(element);
+            infoLogger.info("Aggiunto elemento " + element);
         }
     }
     }

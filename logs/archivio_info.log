@@ -1,0 +1,7 @@
+2024-01-19 04:28:11 INFO main archivio - Aggiunto elemento Libri{ElementiBiblioteca{ISBN=1, titolo='Il signore degli Anelli - la compagnia dell'anello', annoPubblicazione=1939-04-12, nPagine=400}autore='Tolkien', genere='Fantasy'}
+2024-01-19 04:28:11 INFO main archivio - Aggiunto elemento Libri{ElementiBiblioteca{ISBN=2, titolo='Harry Potter e la pietra filosoale', annoPubblicazione=2001-09-12, nPagine=220}autore='Rowling', genere='Fantasy'}
+2024-01-19 04:28:11 INFO main archivio - Aggiunto elemento Libri{ElementiBiblioteca{ISBN=3, titolo='Se questo è un uomo', annoPubblicazione=1990-08-25, nPagine=157}autore='Primo Levi', genere='Biography'}
+2024-01-19 04:28:11 INFO main archivio - Aggiunto elemento Riviste{ElementiBiblioteca{ISBN=4, titolo='Famiglia Cristiana', annoPubblicazione=2000-12-14, nPagine=50}periodicità=SETTIMANALE}
+2024-01-19 04:28:11 INFO main archivio - Aggiunto elemento Riviste{ElementiBiblioteca{ISBN=5, titolo='Novella 2000', annoPubblicazione=2004-10-14, nPagine=60}periodicità=SETTIMANALE}
+2024-01-19 04:28:11 INFO main archivio - Aggiunto elemento Riviste{ElementiBiblioteca{ISBN=6, titolo='Focus', annoPubblicazione=1998-03-28, nPagine=45}periodicità=MENSILE}
+2024-01-19 04:28:11 INFO main archivio - Aggiunto elemento Riviste{ElementiBiblioteca{ISBN=7, titolo='Maghi e magie', annoPubblicazione=1898-02-28, nPagine=70}periodicità=SEMESTRALE}
