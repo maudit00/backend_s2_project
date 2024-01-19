@@ -1,0 +1,4 @@
+2024-01-19 17:35:33,859 ERROR main archivio_error - L'archivio ha già l'elemento : Libri{ElementiBiblioteca{ISBN=1, titolo='Il signore degli Anelli - la compagnia dell'anello', annoPubblicazione=1939-04-12, nPagine=400}autore='Tolkien', genere='Fantasy'}
+2024-01-19 17:35:33,864 ERROR main archivio_error - Elemento con ISBN: 8 non trovato!
+2024-01-19 17:35:33,868 ERROR main archivio_error - projects2.SearchExecption: Elemento con ISBN 0 non trovato
+2024-01-19 17:35:33,875 ERROR main archivio_error - projects2.SearchExecption: Nessun elemento con Autore Barababa trovato
