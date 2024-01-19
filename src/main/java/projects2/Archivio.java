@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 
 
 public class Archivio {
-    final static Logger infoLogger = LoggerFactory.getLogger("archivio");
-    final static Logger errorLogger = LoggerFactory.getLogger("archivio2");
+    final static Logger infoLogger = LoggerFactory.getLogger("archivio_info");
+    final static Logger errorLogger = LoggerFactory.getLogger("archivio_error");
     public static void main(String[] args) {
         List<ElementiBiblioteca> archivio = new ArrayList<>();
 
@@ -49,11 +49,12 @@ public class Archivio {
         ElementiBiblioteca e2 = searchByIsbn(archivio, 2);
 
 
-        List<ElementiBiblioteca> e3 = searchByYear(archivio, "1958");
+        List<ElementiBiblioteca> e3 = searchByYear(archivio, "1998");
         List<ElementiBiblioteca> e4 = searchByAuthor(archivio, "Barababa");
 
         try {
             salvaSuDisco(archivio);
+            infoLogger.info("Salvataggio archivio su file");
         } catch (IOException e){
             errorLogger.error(String.valueOf(e));
         }
@@ -61,6 +62,7 @@ public class Archivio {
         try {
            ArrayList<ElementiBiblioteca> a1 =  leggiDaDisco();
            printList(a1);
+            infoLogger.info("Lettura archivio da file");
         } catch (IOException e){
             errorLogger.error(String.valueOf(e));
         }
@@ -87,6 +89,7 @@ public class Archivio {
 
     public static ElementiBiblioteca searchByIsbn (List<ElementiBiblioteca> lista, long isbn){
         try {
+            infoLogger.info("Ricerca per ISBN " + isbn);
             return lista.stream()
                     .filter(e -> e.getISBN() == isbn)
                     .findAny()
@@ -101,6 +104,7 @@ public class Archivio {
         try {
             List<ElementiBiblioteca> list = lista.stream().filter(e -> e.getAnnoPubblicazione().getYear() == date.getYear()).toList();
             list.stream().findAny().orElseThrow(()-> new SearchExecption("Nessun elemento con Anno " + anno + " trovato"));
+            infoLogger.info("Ricerca per anno " + date.getYear());
             return list;
         } catch (SearchExecption e){
             errorLogger.error(String.valueOf(e));
@@ -112,6 +116,7 @@ public class Archivio {
        try {
            List<ElementiBiblioteca> list = lista.stream().filter(e -> e instanceof Libri && ((Libri) e).getAutore().toLowerCase() == autore.toLowerCase()).toList();
            list.stream().findAny().orElseThrow(()-> new SearchExecption("Nessun elemento con Autore " + autore + " trovato"));
+           infoLogger.info("Ricerca per Autore: " + autore);
            return list;
        } catch (SearchExecption e){
            errorLogger.error(String.valueOf(e));
