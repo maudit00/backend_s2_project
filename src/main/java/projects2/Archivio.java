@@ -4,8 +4,6 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.imageio.IIOException;
-import javax.swing.text.Element;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -14,7 +12,6 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -72,8 +69,8 @@ public class Archivio {
     //metodo per l'eliminazione dall'archivio tramite isbn
     public static void removeByIsbn(List<ElementiBiblioteca> lista, long isbn){
         try {
-            lista.removeIf(el -> el.getISBN() == isbn);
             if (lista.stream().anyMatch(el -> el.getISBN() == isbn)){
+                lista.removeIf(el -> el.getISBN() == isbn);
                 System.out.println("Elemento con ISBN: " + isbn + " eliminato con successo!");
             } else {
                 throw new RuntimeException();
@@ -173,7 +170,7 @@ public class Archivio {
     //aggiunta in archivio con controllo su ISBN se è già esistente
     public static void addToArchivio(List<ElementiBiblioteca> lista, ElementiBiblioteca element) {
         if (lista.stream().map(e -> e.getISBN()).anyMatch(el -> el == element.getISBN())){
-            System.out.println("L'archivio ha già l'elemento : " + element.getISBN());
+            System.out.println("L'archivio ha già l'elemento : " + element);
         } else {
             lista.add(element);
         }
